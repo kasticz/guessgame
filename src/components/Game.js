@@ -9,11 +9,11 @@ export default function Game(props) {
   ];
   return (
     <div className={styles.game}>
-      {/* <GameCard
+      <GameCard
         descr={"First Roman emperor"}
         title={"Augustus"}
         guessType={"Год начала правления"}
-      /> */}
+      />
     </div>
   );
 }

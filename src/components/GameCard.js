@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from "react";
 import styles from "./GameCard.module.sass";
 
 export default function GameCard(props) {
-  const [img, setImg] = useState();
   const [item, setItem] = useState();
 
   useEffect(() => {
