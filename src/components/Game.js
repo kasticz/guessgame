@@ -1,19 +1,48 @@
 import styles from "./Game.module.sass";
-import GameCard from "./GameCard";
+import NewGameCard from "./NewGameCard";
+import TimeLine from "./TimeLine";
+import { useState, useEffect } from "react";
+import { getCard } from "../store/interfaceLogic";
+import { useDispatch, useSelector } from "react-redux";
+import { timelineActions } from "../store/store";
 
 export default function Game(props) {
-  const years = [
-    ["начала правления", "-27|1"],
-    ["рождения", "-63|9"],
-    ["смерти", "14|8"],
-  ];
+  const itemPlaced = useSelector(state => state.timeline.itemPlaced)
+  const [item, setItem] = useState();
+  const [nextItem,setNextItem] = useState()
+  const dispatch = useDispatch()
+  const items = useSelector(state=> state.timeline.cards)
+
+
+  useEffect(()=>{
+    if(itemPlaced){
+      dispatch(timelineActions.setItemPlaced())      
+      setItem(nextItem)
+      getCard('human',setNextItem,items)
+    }
+  },[itemPlaced])
+
+
+
+  useEffect(() => {
+    if (!item){
+      getCard('human',setItem,items);
+      getCard('human',setNextItem,items)
+    } 
+  }, []);
+  // useEffect(()=>{
+  //   if(itemPlayed){
+  //     setItemPlayed(false)
+  //     setItem(nextItem)
+  //     getCard('human',setNextItem)
+  //   }
+
+  // },[itemPlayed])
+
   return (
     <div className={styles.game}>
-      <GameCard
-        descr={"First Roman emperor"}
-        title={"Augustus"}
-        guessType={"Год начала правления"}
-      />
+      <NewGameCard  item={item}/>
+      <TimeLine/>
     </div>
   );
 }

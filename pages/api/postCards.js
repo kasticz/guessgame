@@ -11,6 +11,7 @@ export default async function handler(req, res) {
     for(let card of cards){
         await db.collection('guessGame').insertOne(card)
     }
+    client.close()
 
     
 

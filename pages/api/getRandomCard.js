@@ -2,6 +2,7 @@ import {MongoClient} from 'mongodb'
 
 export default async function handler(req, res) {
     const typeToFind = req.body.type
+    const playedItems = req.body.items
 
     const client = await MongoClient.connect(
         `mongodb+srv://kastic:8R8HDozRYn7ociS6@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`
@@ -10,9 +11,19 @@ export default async function handler(req, res) {
     
 
     const allOfTypes =  await db.collection('guessGame').find({}).toArray()
+    client.close()
 
     const l = allOfTypes.length
-    const random =  allOfTypes[Math.floor(Math.random() * l)]
+    let random =  allOfTypes[Math.floor(Math.random() * l)]
+
+
+    let ifAlreadyInPlay = playedItems.find(item => item.title === random.title)
+
+    while(ifAlreadyInPlay){
+      random = allOfTypes[Math.floor(Math.random() * l)]
+      ifAlreadyInPlay = playedItems.find(item => item.title === random.title)
+    }
+    
 
 
 

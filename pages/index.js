@@ -9,7 +9,7 @@ import { useState } from "react";
 import Game from "../src/components/Game";
 
 export default function Home(props) {
-  // console.log(props.qwe.parse.text['*'])
+
 
   const [preGame, setPreGame] = useState(true);
   const [choosenType, setChoosenType] = useState(null);
@@ -26,7 +26,7 @@ export default function Home(props) {
   // const imgPre = props.img.query.pages;
   // const imgSource = imgPre[Object.keys(imgPre)[0]].thumbnail.source;
 
-  console.log(i);
+ 
   // console.log(imgSource);
   // console.log(props.img)
 
@@ -45,6 +45,7 @@ export default function Home(props) {
   return (
     <main className={styles.game}>
       {preGame ? (
+        <div className={styles.mainPage}>
         <div className={styles.uiWrapper}>
           <h1>Что было раньше?</h1>
           <div className={styles.bestStreak}>Ваш лучший результат - 10</div>
@@ -96,6 +97,7 @@ export default function Home(props) {
             </button>
           </div>
         </div>
+        </div>
       ) : (
         <Game type={choosenType || "all"} />
       )}
@@ -105,7 +107,7 @@ export default function Home(props) {
 
 export async function getServerSideProps() {
   const resp = await fetch(
-    "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Dante_Alighieri&formatversion=2&rvprop=content&rvslots=*",
+    "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Francisco_Goya&formatversion=2&rvprop=content&rvslots=*",
     {
       method: "GET",
       headers: {

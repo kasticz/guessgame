@@ -27,7 +27,7 @@ const cards = [
         title:'Isaac_Newton',
         descr:'English physicist and mathematician'
         ,
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -157,7 +157,7 @@ const cards = [
         ['смерти','1778|1']],
         title:'Carl_Linnaeus',
         descr:'Swedish botanist, physician, and zoologist',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -257,7 +257,7 @@ const cards = [
         ['смерти','1658|9']],
         title:'Oliver_Cromwell',
         descr:'English military and political leader',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -287,7 +287,7 @@ const cards = [
         ['смерти','1804|2']],
         title:'Immanuel_Kant',
         descr:'German philosopher',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -307,7 +307,7 @@ const cards = [
         ['смерти','1778|5']],
         title:'Voltaire',
         descr:'French writer, historian, and philosopher',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -397,7 +397,7 @@ const cards = [
         ['смерти','1778|7']],
         title:'Jean-Jacques_Rousseau',
         descr:'Genevan philosopher, writer, and composer',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -407,7 +407,7 @@ const cards = [
         ['смерти','1715|9']],
         title:'Louis_XIV',
         descr:'King of France',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -437,7 +437,7 @@ const cards = [
         ['смерти','1650|2']],
         title:'René_Descartes',
         descr:'French philosopher, mathematician, and scientist',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -464,10 +464,10 @@ const cards = [
         years:[
         // ['начала правления','1871|3'],
         ['рождения','1632|8'],
-        ['смерти','1794|10']],
+        ['смерти','1704|10']],
         title:'John_Locke',
         descr:'Leading English Enlightenment philosopher and physician',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -477,7 +477,7 @@ const cards = [
         ['смерти','1679|12']],
         title:'Thomas_Hobbes',
         descr:'English philosopher',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -487,7 +487,7 @@ const cards = [
         ['смерти','1832|3']],
         title:'Johann_Wolfgang_von_Goethe',
         descr:'German writer and polymath',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -497,7 +497,7 @@ const cards = [
         ['смерти','1821|5']],
         title:'Napoleon',
         descr:'French military leader, French Emperor',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -547,7 +547,7 @@ const cards = [
         ['смерти','1796|11']],
         title:'Catherine_the_Great',
         descr:'Empress of Russia',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -557,7 +557,7 @@ const cards = [
         ['смерти','1800|5']],
         title:'Alexander_Suvorov',
         descr:'Russian military commander',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -567,7 +567,7 @@ const cards = [
         ['смерти','1813|4']],
         title:'Mikhail_Kutuzov',
         descr:'Field Marshal of the Russian Empire',
-        era: 3
+        era: 2
     },
     {
         type: 'human',
@@ -712,8 +712,8 @@ const cards = [
         type: 'human',
         years:[
         ['начала правления','-221|0'],
-        ['рождения','259|0'],
-        ['смерти','210|0']],
+        ['рождения','-259|0'],
+        ['смерти','-210|0']],
         title:'Qin_Shi_Huang',
         descr:'First emperor of the Qin Dynasty',
         era: 1
@@ -747,7 +747,286 @@ const cards = [
         descr:'Chinese philosopher, founder of Taoism',
         era: 1
     },
-
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1856|7'],
+        ['смерти','1943|1']],
+        title:'Nikola_Tesla',
+        descr:'Serbian-American inventor',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','-287|0'],
+        ['смерти','-212|0']],
+        title:'Archimedes',
+        descr:'Greek mathematician and physicist',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1847|3'],
+        ['смерти','1922|8']],
+        title:'Alexander_Graham_Bell',
+        descr:'Scottish-American scientist and inventor',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1846|10'],
+        ['смерти','1914|3']],
+        title:'George_Westinghouse',
+        descr:'American engineer and businessman',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1706|1'],
+        ['смерти','1790|4']],
+        title:'Benjamin_Franklin',
+        descr:'Founding Father of the United States',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1909|5'],
+        ['смерти','1991|3']],
+        title:'Edwin_H._Land',
+        descr:'American scientist, inventor, and entrepreneur',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','10|0'],
+        ['смерти','70|0']],
+        title:'Hero_of_Alexandria',
+        descr:'Greco-Egyptian mathematician and engineer',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1735|4'],
+        ['смерти','1818|8']],
+        title:'Ivan_Kulibin',
+        descr:'Russian mechanic',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1736|1'],
+        ['смерти','1819|9']],
+        title:'James_Watt',
+        descr:'Scottish inventor, mechanical engineer and chemist',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1907|1'],
+        ['смерти','1966|1']],
+        title:'Sergei_Korolev',
+        descr:'Soviet spacecraft designer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1940|10'],
+        ['смерти','1980|12']],
+        title:'John_Lennon',
+        descr:'English musician and member of the Beatles',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1946|9'],
+        ['смерти','1991|11']],
+        title:'Freddie_Mercury',
+        descr:'British rock musician; frontman of Queen',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1958|9'],
+        ['смерти','2009|6']],
+        title:'Michael_Jackson',
+        descr:'American singer, songwriter, and dancer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1932|2'],
+        ['смерти','2003|9']],
+        title:'Johnny_Cash',
+        descr:'American singer-songwriter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1840|11'],
+        ['смерти','1926|12']],
+        title:'Claude_Monet',
+        descr:'French painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1853|3'],
+        ['смерти','1890|7']],
+        title:'Vincent_van_Gogh',
+        descr:'Dutch painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1881|10'],
+        ['смерти','1973|4']],
+        title:'Pablo_Picasso',
+        descr:'Spanish painter and sculptor',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1577|6'],
+        ['смерти','1640|5']],
+        title:'Peter_Paul_Rubens',
+        descr:'Flemish artist and diplomat',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1606|7'],
+        ['смерти','1669|10']],
+        title:'Rembrandt',
+        descr:'Dutch painter and printmaker',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1904|5'],
+        ['смерти','1989|1']],
+        title:'Salvador_Dalí',
+        descr:'Spanish surrealist artist',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1445|0'],
+        ['смерти','1510|5']],
+        title:'Sandro_Botticelli',
+        descr:'Italian Renaissance painter',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1848|6'],
+        ['смерти','1903|5']],
+        title:'Paul_Gauguin',
+        descr:'French artist',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1863|12'],
+        ['смерти','1944|1']],
+        title:'Edvard_Munch',
+        descr:'Norwegian painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1839|1'],
+        ['смерти','1906|10']],
+        title:'Paul_Cézanne',
+        descr:'French painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1832|1'],
+        ['смерти','1883|4']],
+        title:'Édouard_Manet',
+        descr:'French painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1450|0'],
+        ['смерти','1516|8']],
+        title:'Hieronymus_Bosch',
+        descr:'Dutch painter',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1746|3'],
+        ['смерти','1828|4']],
+        title:'Francisco_Goya',
+        descr:'Spanish painter and printmaker',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1746|3'],
+        ['смерти','1828|4']],
+        title:'Francisco_Goya',
+        descr:'Spanish painter and printmaker',
+        era: 2
+    },
 ]
 
 

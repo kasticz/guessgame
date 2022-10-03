@@ -1,5 +1,11 @@
+.cardWrapper
+    width: 100%
+    display: flex
+    justify-content: center
+    height: 400px
 .card
-    width: 300px
+    width: 302px
+    height: 400px
     display: flex
     justify-content: center
     align-items: center
@@ -10,12 +16,20 @@
     border-radius: 16px
     padding: 10px 0
     cursor: grab
+    box-shadow: 5px 5px 5px black
+    z-index: 1000
     img
         max-width: 300px
         max-height: 300px
         margin: 10px 0
     span
         text-align: center
+.playedCard
+    cursor: pointer
+    position: relative
+    &:nth-child(n+2)
+        margin-left: 20px
+        
 .imageWrapper
         width: 300px
         height: 250px
@@ -24,6 +38,11 @@
 
 .cardTitle
     font-weight: 700
+.cardDescr
+    height: 50px
+    margin: 0 5px
 
 
 
+.readyToDrop
+    box-shadow: 5px 5px 15px green
