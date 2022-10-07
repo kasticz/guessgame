@@ -14,7 +14,7 @@
     background-color: #fff
     color: black
     border-radius: 16px
-    padding: 10px 0
+    padding: 10px 0 0 0
     cursor: grab
     box-shadow: 5px 5px 5px black
     z-index: 1000
@@ -27,13 +27,21 @@
 .playedCard
     cursor: pointer
     position: relative
+    transition: 0.5s all
+    border: none
+    outline: none
     &:nth-child(n+2)
         margin-left: 20px
+    .imageWrapper
+        width: 302px
+    .guessType
+        color: white
+        font-size: 30px
         
 .imageWrapper
         width: 300px
         height: 250px
-        margin: 10px 0
+        margin: 10px 0 0 0 
 
 
 .cardTitle
@@ -46,3 +54,19 @@
 
 .readyToDrop
     box-shadow: 5px 5px 15px green
+
+.guessType
+    width: 100%
+    padding: 15px
+    font-size: 20px
+    color: black
+    height: 60px
+    border-bottom-left-radius: 16px
+    border-bottom-right-radius: 16px
+    display: flex
+    justify-content: center
+    align-items: center
+.correct
+    background-color: green
+.wrong
+    background-color: red

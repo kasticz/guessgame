@@ -14,8 +14,9 @@ export default function NewGameCard(props) {
 
 
 
+
   return (
-    <div className={styles.cardWrapper}>
+    <div data-notacard className={styles.cardWrapper}>
       {item?.image ? (
         <div ref={cardRef} data-newcard={true} draggable={false}  onMouseDown={(e)=>{onMouseDown(e,cardRef.current,styles,dispatch,item)}} className={styles.card}>
           <span className={styles.cardTitle}>

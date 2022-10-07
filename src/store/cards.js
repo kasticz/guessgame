@@ -93,8 +93,8 @@ const cards = [
         type: 'human',
         years:[
         // ['начала правления','1370|4'],
-        ['рождения','384|0'],
-        ['смерти','322|0']],
+        ['рождения','-384|0'],
+        ['смерти','-322|0']],
         title:'Aristotle',
         descr:'Classical Greek philosopher and polymath',
         era: 1

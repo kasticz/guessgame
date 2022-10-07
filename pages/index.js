@@ -5,7 +5,8 @@ import eventsImg from "../src/images/events.png";
 import objectsImg from "../src/images/objects.png";
 import allImg from "../src/images/all.png";
 import styles from "./index.module.sass";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import Game from "../src/components/Game";
 
 export default function Home(props) {
@@ -13,15 +14,20 @@ export default function Home(props) {
 
   const [preGame, setPreGame] = useState(true);
   const [choosenType, setChoosenType] = useState(null);
+  const [cookies] = useCookies(["bestResult"])
+  const [bestRes,setBestRes] = useState()
 
   function startGame() {
     setPreGame(false);
   }
+  useEffect(()=>{
+    if(!bestRes && cookies.bestResult) setBestRes(cookies.bestResult) 
+  },[cookies,preGame])
 
-  const i = props.info.query.pages[0].revisions[0].slots.main.content.slice(
-    0,
-    5000
-  );
+  // const i = props.info.query.pages[0].revisions[0].slots.main.content.slice(
+  //   0,
+  //   5000
+  // );
 
   // const imgPre = props.img.query.pages;
   // const imgSource = imgPre[Object.keys(imgPre)[0]].thumbnail.source;
@@ -41,22 +47,22 @@ export default function Home(props) {
     descr: "Founder and main prophet of Islam",
   };
 
-  async function retr() {}
+
   return (
     <main className={styles.game}>
       {preGame ? (
         <div className={styles.mainPage}>
         <div className={styles.uiWrapper}>
           <h1>Что было раньше?</h1>
-          <div className={styles.bestStreak}>Ваш лучший результат - 10</div>
+          <div className={styles.bestRes}>Ваш лучший результат - {bestRes || 0}</div>
           <div className={styles.chooseWrapper}>
             <h2>Выберите категорию</h2>
             <div className={styles.categoriesWrapper}>
               <div
                 onClick={() => {
-                  setChoosenType("people");
+                  setChoosenType("human");
                 }}
-                className={`${styles.category} ${choosenType === 'people' ? styles.big : ''}`}
+                className={`${styles.category} ${choosenType === 'human' ? styles.big : ''}`}
               >
                 <img src={peopleImg.src} alt="" />
                 <h3>Люди</h3>
@@ -99,40 +105,40 @@ export default function Home(props) {
         </div>
         </div>
       ) : (
-        <Game type={choosenType || "all"} />
+        <Game toMain={setPreGame} choosenType={choosenType || "all"} />
       )}
     </main>
   );
 }
 
-export async function getServerSideProps() {
-  const resp = await fetch(
-    "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Francisco_Goya&formatversion=2&rvprop=content&rvslots=*",
-    {
-      method: "GET",
-      headers: {
-        Origin: "en.wikipedia.org ",
-      },
-    }
-  );
+// export async function getServerSideProps() {
+//   const resp = await fetch(
+//     "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Francisco_Goya&formatversion=2&rvprop=content&rvslots=*",
+//     {
+//       method: "GET",
+//       headers: {
+//         Origin: "en.wikipedia.org ",
+//       },
+//     }
+//   );
 
-  const resp2 = await fetch(
-    "http://en.wikipedia.org/w/api.php?action=query&titles=Augustus&prop=pageimages&format=json&pithumbsize=300",
-    {
-      method: "GET",
-      headers: {
-        Origin: "en.wikipedia.org ",
-      },
-    }
-  );
+//   const resp2 = await fetch(
+//     "http://en.wikipedia.org/w/api.php?action=query&titles=Augustus&prop=pageimages&format=json&pithumbsize=300",
+//     {
+//       method: "GET",
+//       headers: {
+//         Origin: "en.wikipedia.org ",
+//       },
+//     }
+//   );
 
-  const data = await resp.json();
-  const data2 = await resp2.json();
+//   const data = await resp.json();
+//   const data2 = await resp2.json();
 
-  return {
-    props: {
-      info: data,
-      img: data2,
-    },
-  };
-}
+//   return {
+//     props: {
+//       info: data,
+//       img: data2,
+//     },
+//   };
+// }
