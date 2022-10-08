@@ -1,7 +1,7 @@
 
 
 
-const cards = [
+export const qwe = [
     {
         years:[['начала правления','1370|4'],['рождения','1336|4'],['смерти','1405|2']],
         title:'Timur',
@@ -592,7 +592,7 @@ const cards = [
     {
         type: 'human',
         years:[
-        ['начала правления','336|0'],
+        ['начала правления','-336|0'],
         ['рождения','-356|7'],
         ['смерти','-323|6']],
         title:'Alexander_the_Great',
@@ -1021,18 +1021,730 @@ const cards = [
         type: 'human',
         years:[
         // ['начала правления','216|0'],
-        ['рождения','1746|3'],
-        ['смерти','1828|4']],
-        title:'Francisco_Goya',
-        descr:'Spanish painter and printmaker',
+        ['рождения','1765|11'],
+        ['смерти','1815|2']],
+        title:'Robert_Fulton',
+        descr:'American engineer and inventor',
         era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1787|11'],
+        ['смерти','1851|7']],
+        title:'Louis_Daguerre',
+        descr:'French photographer, inventor of Daguerrotype',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1791|4'],
+        ['смерти','1872|4']],
+        title:'Samuel_Morse',
+        descr:'American inventor and painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1791|4'],
+        ['смерти','1872|4']],
+        title:'Samuel_Morse',
+        descr:'American inventor and painter',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1863|7'],
+        ['смерти','1947|4']],
+        title:'Henry_Ford',
+        descr:'American industrialist and businessman',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1874|4'],
+        ['смерти','1937|7']],
+        title:'Guglielmo_Marconi',
+        descr:'Italian inventor and radio pioneer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1922|3'],
+        ['смерти','2014|12']],
+        title:'Ralph_H._Baer',
+        descr:'German-American inventor and engineer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1852|6'],
+        ['смерти','1926|6']],
+        title:'Antoni_Gaudí',
+        descr:'Spanish architect',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1867|6'],
+        ['смерти','1959|4']],
+        title:'Frank_Lloyd_Wright',
+        descr:'American architect',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','216|0'],
+        ['рождения','1887|11'],
+        ['смерти','1965|8']],
+        title:'Le_Corbusier',
+        descr:'Swiss-French architect ',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','-559|0'],
+        ['рождения','-600|0'],
+        ['смерти','-530|0']],
+        title:'Cyrus_the_Great',
+        descr:'Founder of the Achaemenid Empire',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','768|10'],
+        ['рождения','747|4'],
+        ['смерти','814|1']],
+        title:'Charlemagne',
+        descr:'King of Franks, first Holy Roman Emperor',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','768|10'],
+        ['рождения','-247|0'],
+        ['смерти','183|0']],
+        title:'Hannibal',
+        descr:'Carthaginian general',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','509|0'],
+        ['рождения','466|0'],
+        ['смерти','511|11']],
+        title:'Clovis_I',
+        descr:'First king of the Franks',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','527|0'],
+        ['рождения','482|0'],
+        ['смерти','565|11']],
+        title:'Justinian_I',
+        descr:'Byzantine emperor',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','531|9'],
+        ['рождения','512|0'],
+        ['смерти','579|2']],
+        title:'Khosrow_I',
+        descr:'King of Kings of Iran',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','690|11'],
+        ['рождения','624|2'],
+        ['смерти','705|12']],
+        title:'Wu_Zetian',
+        descr:'Founding empress of Zhou dynasty',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','786|9'],
+        ['рождения','763|3'],
+        ['смерти','809|3']],
+        title:'Harun_al-Rashid',
+        descr:'5th Abbasid caliph',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','786|9'],
+        ['рождения','864|0'],
+        ['смерти','925|0']],
+        title:'Abu_Bakr_al-Razi',
+        descr:'Iranian physician, chemist and philosopher',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','911|0'],
+        // ['рождения','835|0'],
+        ['смерти','928|0']],
+        title:'Rollo',
+        descr:'Medieval Viking and count of Normandy',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','960|2'],
+        ['рождения','927|3'],
+        ['смерти','976|11']],
+        title:'Emperor_Taizu_of_Song',
+        descr:'Founding emperor of the Song Dynasty',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1014|0'],
+        ['рождения','971|0'],
+        ['смерти','1044|0']],
+        title:'Rajendra_Chola_I',
+        descr:'Chola emperor',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1014|0'],
+        ['рождения','1159|0'],
+        ['смерти','1189|0']],
+        title:'Minamoto_no_Yoshitsune',
+        descr:'military commander in the Minamoto clan of feudal Japan',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1174|0'],
+        ['рождения','1137|0'],
+        ['смерти','1193|0']],
+        title:'Saladin',
+        descr:'Conqueror and Ayyubid Sultan',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1181|0'],
+        ['рождения','1122|0'],
+        ['смерти','1218|0']],
+        title:'Jayavarman_VII',
+        descr:'Cambodian king',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1181|0'],
+        ['рождения','1254|0'],
+        ['смерти','1324|1']],
+        title:'Marco_Polo',
+        descr:'Venetian merchant who explored Asia',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1312|0'],
+        // ['рождения','1254|0'],
+        ['смерти','1337|0']],
+        title:'Mansa_Musa',
+        descr:'Ruler of Mali',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1312|0'],
+        ['рождения','1377|0'],
+        ['смерти','1446|4']],
+        title:'Filippo_Brunelleschi',
+        descr:'Italian Renaissance Architect',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1312|0'],
+        ['рождения','-570|0'],
+        ['смерти','-495|0']],
+        title:'Pythagoras',
+        descr:'Greek philosopher and mystic',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1312|0'],
+        ['рождения','1757|1'],
+        ['смерти','1791|12']],
+        title:'Wolfgang_Amadeus_Mozart',
+        descr:'Classical-era composer',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1312|0'],
+        ['рождения','1770|12'],
+        ['смерти','1827|3']],
+        title:'Ludwig_van_Beethoven',
+        descr:'German composer',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1312|0'],
+        ['рождения','-484|0'],
+        ['смерти','-425|0']],
+        title:'Herodotus',
+        descr:'Greek historian and geographer',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','54|0'],
+        ['рождения','37|0'],
+        ['смерти','68|0']],
+        title:'Nero',
+        descr:'Roman emperor',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','54|0'],
+        ['рождения','1818|5'],
+        ['смерти','1883|3']],
+        title:'Karl_Marx',
+        descr:'German philosopher',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','54|0'],
+        ['рождения','-460|0'],
+        ['смерти','-370|0']],
+        title:'Hippocrates',
+        descr:'Ancient Greek physician',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','54|0'],
+        ['рождения','1863|1'],
+        ['смерти','1902|7']],
+        title:'Swami_Vivekananda',
+        descr:'Indian Hindu monk and philosopher',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','54|0'],
+        ['рождения','1903|6'],
+        ['смерти','1950|1']],
+        title:'George_Orwell',
+        descr:'English author and journalist',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','54|0'],
+        ['рождения','-341|2'],
+        ['смерти','-270|0']],
+        title:'Epicurus',
+        descr:'Ancient Greek philosopher, founder of Epicureanism',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','-268|0'],
+        ['рождения','-304|0'],
+        ['смерти','-232|0']],
+        title:'Ashoka',
+        descr:'Indian emperor, commander and Buddhist',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-268|0'],
+        ['рождения','150|0'],
+        ['смерти','250|0']],
+        title:'Nagarjuna',
+        descr:'Indian Buddhist philosopher',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','161|0'],
+        ['рождения','121|0'],
+        ['смерти','180|0']],
+        title:'Marcus_Aurelius',
+        descr:'Roman emperor and Stoic philosopher',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','-324|0'],
+        ['рождения','-350|0'],
+        ['смерти','-295|0']],
+        title:'Chandragupta_Maurya',
+        descr:'Founder of the Maurya Empire in ancient India',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','1469|5'],
+        ['смерти','1527|6']],
+        title:'Niccolò_Machiavelli',
+        descr:'Italian diplomat and political theorist',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','1623|6'],
+        ['смерти','1662|8']],
+        title:'Blaise_Pascal',
+        descr:'French mathematician, physicist, inventor, writer, and Christian philosopher',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','1809|2'],
+        ['смерти','1882|4']],
+        title:'Charles_Darwin',
+        descr:'English naturalist and biologist',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','-65|12'],
+        ['смерти','-8|11']],
+        title:'Horace',
+        descr:'Roman lyric poet',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','-544|0'],
+        ['смерти','-496|0']],
+        title:'Sun_Tzu',
+        descr:'Chinese general and military strategist',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','-460|0'],
+        ['смерти','-370|0']],
+        title:'Democritus',
+        descr:'Ancient Greek philosopher',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-324|0'],
+        ['рождения','1929|1'],
+        ['смерти','1968|4']],
+        title:'Martin_Luther_King_Jr.',
+        descr:'American civil-rights activist and leader',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1810|3'],
+        ['смерти','1849|10']],
+        title:'Frédéric_Chopin',
+        descr:'Polish composer and pianist',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1828|9'],
+        ['смерти','1910|11']],
+        title:'Leo_Tolstoy',
+        descr:'Russian author',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1821|11'],
+        ['смерти','1881|2']],
+        title:'Fyodor_Dostoevsky',
+        descr:'Russian author',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','-70|10'],
+        ['смерти','-19|9']],
+        title:'Virgil',
+        descr:'Roman poet',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1547|9'],
+        ['смерти','1616|4']],
+        title:'Miguel_de_Cervantes',
+        descr:'Spanish novelist, poet, and playwright',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1564|9'],
+        ['смерти','1616|4']],
+        title:'William_Shakespeare',
+        descr:'English poet, playwright, and actor',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1608|12'],
+        ['смерти','1674|11']],
+        title:'John_Milton',
+        descr:'English poet and civil servant',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1757|11'],
+        ['смерти','1827|8']],
+        title:'William_Blake',
+        descr:'English poet and artist',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1775|12'],
+        ['смерти','1817|7']],
+        title:'Jane_Austen',
+        descr:'English novelist',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1828|2'],
+        ['смерти','1905|3']],
+        title:'Jules_Verne',
+        descr:'French writer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1832|1'],
+        ['смерти','1898|1']],
+        title:'Lewis_Carroll',
+        descr:'British author and scholar',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1883|6'],
+        ['смерти','1924|7']],
+        title:'Franz_Kafka',
+        descr:'Bohemian writer from Prague',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1882|2'],
+        ['смерти','1941|1']],
+        title:'James_Joyce',
+        descr:'Irish novelist and poet',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1896|9'],
+        ['смерти','1940|12']],
+        title:'F._Scott_Fitzgerald',
+        descr:'American writer',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1927|3'],
+        ['смерти','2014|4']],
+        title:'Gabriel_García_Márquez',
+        descr:'Colombian writer and Nobel laureate',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','-486|0'],
+        ['рождения','1941|1'],
+        // ['смерти','2014|4']
+    ],
+        title:'Hayao_Miyazaki',
+        descr:'Japanese animator, film director, and mangaka',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1578|0'],
+        ['рождения','1534|6'],
+        ['смерти','1582|6']],
+        title:'Oda_Nobunaga',
+        descr:'Japanese samurai and warlord',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        ['начала правления','1603|0'],
+        ['рождения','1543|1'],
+        ['смерти','1616|6']],
+        title:'Tokugawa_Ieyasu',
+        descr:'First Tokugawa shōgun of Japan',
+        era: 2
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1603|0'],
+        ['рождения','1836|1'],
+        ['смерти','1867|12']],
+        title:'Sakamoto_Ryōma',
+        descr:'Japanese samurai and politician',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1603|0'],
+        ['рождения','1947|1'],
+        // ['смерти','1867|12']
+    ],
+        title:'Takeshi_Kitano',
+        descr:'Japanese comedian, actor, and director',
+        era: 3
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1603|0'],
+        ['рождения','-570|0'],
+        ['смерти','-478|0']],
+        title:'Xenophanes',
+        descr:'Greek Pre-Socratic philosopher',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1603|0'],
+        ['рождения','-497|0'],
+        ['смерти','-406|0']],
+        title:'Sophocles',
+        descr:'Athenian tragic playwright',
+        era: 1
+    },
+    {
+        type: 'human',
+        years:[
+        // ['начала правления','1603|0'],
+        ['рождения','1915|12'],
+        ['смерти','1998|5']],
+        title:'Frank_Sinatra',
+        descr:'American singer and actor',
+        era: 3
     },
 ]
 
 
-const era1 = cards.filter(item => item.era === 1)
-const era2 = cards.filter(item => item.era === 2)
-const era3 = cards.filter(item => item.era === 3)
+// const era1 = cards.filter(item => item.era === 1)
+// const era2 = cards.filter(item => item.era === 2)
+// const era3 = cards.filter(item => item.era === 3)
 
 
 
@@ -1045,5 +1757,5 @@ const era3 = cards.filter(item => item.era === 3)
 
 
 
-console.log(era1.length,era2.length,era3.length)
-console.log(cards.length)
+// console.log(era1.length,era2.length,era3.length)
+// console.log(cards.length)

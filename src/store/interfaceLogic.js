@@ -258,7 +258,6 @@ export function moveTimeline(e) {
 }
 export function changeTimeLinePos(newTlPos){
   timelinePosition = newTlPos
-  console.log(newTlPos)
 }
 
 function debounce(fn, delay) {

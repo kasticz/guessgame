@@ -1,16 +1,23 @@
 
 import { useRef, useEffect } from "react";
+import {useRouter} from 'next/router'
 import styles from "./GameCard.module.sass";
 
 export default function GameCard(props) {
+  const router = useRouter()
   const item = props.item;
   const cardRef = useRef()
-  console.log(item)
+  function toWiki(){
+    router.push(``)
+
+  }
 
 
 
   return (
-    <div ref={cardRef} data-moving='false' data-moved='false' data-placedcard data-index={props.i + 1} className={`${styles.card} ${styles.playedCard}`}>
+    
+    <div onClick={toWiki} ref={cardRef} data-moving='false' data-moved='false' data-placedcard data-index={props.i + 1} className={`${styles.card} ${styles.playedCard}`}>
+      <a target='_blank' href={`https://en.wikipedia.org/wiki/${item.title}`}>
       <span className={styles.cardTitle}>{item.title.split("_").join(" ")}</span>
       <span className={styles.cardDescr}>{item.descr}</span>
       <div  data-index={props.i}
@@ -23,6 +30,8 @@ export default function GameCard(props) {
         className={styles.imageWrapper}
       ></div>
       <span className={`${styles.guessType} ${item.guessResult ? styles.correct : styles.wrong}`}>{item.answer[0]}</span>
+      </a>
     </div>
+    
   );
 }

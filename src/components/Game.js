@@ -24,6 +24,7 @@ export default function Game(props) {
   useEffect(() => {
     async function getNewCard() {
       dispatch(timelineActions.setItemPlaced());
+      setItem(null)
       if (nextItem) setItem(nextItem);
 
       getCard(
@@ -31,7 +32,7 @@ export default function Game(props) {
         setNextItem,
         cookies.playedCards,
         false,
-        setCookies
+        setCookies,
       );
     }
     if (itemPlaced) {
@@ -75,16 +76,19 @@ export default function Game(props) {
       placeInitialCard();
     }
   }, []);
-  useEffect(()=>{
-    if(items.length > 0 && item){
-      const checkIfAlreadyInPlay = items.find(i => i.title === item.title )
-      console.log(items,item,checkIfAlreadyInPlay)
-      if(checkIfAlreadyInPlay){
-        // getCard(props.choosenType, setItem, cookies.playedCards, false, setCookies);
-      }
-    }
 
-  },[items,item])
+
+  useEffect(()=>{
+    if((item && nextItem) && item.title === nextItem.title){
+      getCard(
+        props.choosenType,
+        setNextItem,
+        cookies.playedCards,
+        false,
+        setCookies
+      );
+    }
+  },[item,nextItem])
 
   const hearts = [1, 2, 3].map((item, index) => {
     return (

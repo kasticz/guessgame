@@ -1,0 +1,63 @@
+.howOverlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(209, 202, 202,0.4)
+.howContent
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    display: flex
+    justify-content: space-between
+    width: 100%
+    height: 100%
+    padding: 150px 20px
+    align-items: center
+    background-color: #23272c
+    button
+        position: absolute
+        bottom: 50px
+        left: 50%
+        transform: translateX(-50%)
+        width: 300px
+        height: 60px
+        padding: 15px
+        font-size: 30px
+        border-radius: 16px
+        background-color: #006699
+        color: white
+        &:hover,&:active        
+            background-color: #3695c5
+.howStep
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-end
+    width: 400px
+    height: 505px
+    color: white
+    font-size: 16px
+    &:nth-of-type(n+2)
+        margin-left: 40px
+    &:nth-of-type(2)
+        width: 800px
+    &:nth-of-type(3)
+        margin-top: 40px
+    p
+        margin-bottom: 10px       
+.gif
+    height: 400px
+
+.howTitle
+    position: absolute
+    top: 50px
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
+    font-size: 25px
+    color: white
+    width: 100%
+    font-weight: 700

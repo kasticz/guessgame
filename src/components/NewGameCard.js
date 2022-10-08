@@ -1,24 +1,26 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { getCard, onMouseDown } from "../store/interfaceLogic";
-import { timelineActions } from "../store/store";
+import {onMouseDown } from "../store/interfaceLogic";
+
 import styles from "./GameCard.module.sass";
 
 export default function NewGameCard(props) {
-  const cardRef = useRef()
-  const dispatch = useDispatch()
-  const item = props.item
-
-
-
-
-
-
+  const cardRef = useRef();
+  const dispatch = useDispatch();
+  const item = props.item;
 
   return (
     <div data-notacard className={styles.cardWrapper}>
       {item?.image ? (
-        <div ref={cardRef} data-newcard={true} draggable={false}  onMouseDown={(e)=>{onMouseDown(e,cardRef.current,styles,dispatch,item)}} className={styles.card}>
+        <div
+          ref={cardRef}
+          data-newcard={true}
+          draggable={false}
+          onMouseDown={(e) => {
+            onMouseDown(e, cardRef.current, styles, dispatch, item);
+          }}
+          className={styles.card}
+        >
           <span className={styles.cardTitle}>
             {item.title.split("_").join(" ")}
           </span>
@@ -37,7 +39,14 @@ export default function NewGameCard(props) {
           >{`Год ${item.choosedGuess[0]}`}</span>
         </div>
       ) : (
-        <div>Loading</div>
+        <div className={styles.spinner}>
+          <div className={styles.ring}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       )}
     </div>
   );
