@@ -222,6 +222,7 @@ export async function getCard(
   setCookies,
   cardsPlayed
 ) {
+  console.log(type)
   const resp = await fetch("./api/getRandomCard", {
     method: "POST",
     body: JSON.stringify({
@@ -307,7 +308,8 @@ export async function placeInitialCards(
   itemI.initial = true;
   dispatch(timelineActions.addItem(itemI));
 
-  cookiesObj[type].push(itemI.title);
+
+  cookiesObj[typeForFirst].push(itemI.title);
 
   const secondItem = await getCard(
     typeForSecond,
@@ -317,7 +319,7 @@ export async function placeInitialCards(
     setCookies
   );
 
-  cookiesObj[type].push(secondItem);
+  cookiesObj[typeForSecond].push(secondItem);
 
   getCard(typeForThird, setNextItem, cookiesObj, false, setCookies);
 }

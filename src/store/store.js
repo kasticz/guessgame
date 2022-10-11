@@ -25,13 +25,13 @@ const timeline = createSlice({
 
       const sameDateToLeft =
         addedItemI !== 0
-          ? item.answer[0] === state.cards[addedItemI - 1].answer[0] &&
-            item.answer[1] === state.cards[index - 1].answer[1]
+          ? state.cards[addedItemI].answer[0] === state.cards[addedItemI - 1].answer[0] &&
+          state.cards[addedItemI].answer[1] === state.cards[index - 1].answer[1]
           : false;
       const sameDateToRight =
         addedItemI !== state.cards.length - 1
-          ? item.answer[0] === state.cards[addedItemI + 1].answer[0] &&
-            item.answer[1] === state.cards[index - 1].answer[1]
+          ? state.cards[addedItemI].answer[0] === state.cards[addedItemI + 1].answer[0] &&
+          state.cards[addedItemI].answer[1] === state.cards[index - 1].answer[1]
           : false;
 
       if (sameDateToLeft || sameDateToRight) {

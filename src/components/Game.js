@@ -8,6 +8,7 @@ import { timelineActions } from "../store/store";
 import { useCookies } from "react-cookie";
 import heart from "../images/heart.svg";
 import brokenHeart from "../images/brokenHeart.svg";
+import getRandomType from "../store/types";
 
 export default function Game(props) {
   const itemPlaced = useSelector((state) => state.timeline.itemPlaced);
@@ -27,7 +28,7 @@ export default function Game(props) {
       if (nextItem) setItem(nextItem);
 
       await getCard(
-        props.choosenType,
+        props.choosenType === 'all' ? getRandomType() : props.choosenType,
         setNextItem,
         cookies.playedCards,
         false,
