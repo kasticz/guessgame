@@ -71,10 +71,10 @@ export default function Home(props) {
                 </div>
                 <div
                   onClick={() => {
-                    setChoosenType("events");
+                    setChoosenType("event");
                   }}
                   className={`${styles.category} ${
-                    choosenType === "events" ? styles.big : ""
+                    choosenType === "event" ? styles.big : ""
                   }`}
                 >
                   <img src={eventsImg.src} alt="" />
@@ -82,10 +82,10 @@ export default function Home(props) {
                 </div>
                 <div
                   onClick={() => {
-                    setChoosenType("objects");
+                    setChoosenType("object");
                   }}
                   className={`${styles.category} ${
-                    choosenType === "objects" ? styles.big : ""
+                    choosenType === "object" ? styles.big : ""
                   }`}
                 >
                   <img src={objectsImg.src} alt="" />
@@ -125,7 +125,7 @@ export default function Home(props) {
               <img
                 src="https://www.mediawiki.org/static/images/mobile/copyright/mediawiki.svg"
                 alt=""
-              />{" "}
+              />
               MediaWiki
             </a>
           </div>
@@ -154,7 +154,7 @@ export default function Home(props) {
 
 // export async function getServerSideProps() {
 //   const resp = await fetch(
-//     "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Frank_Sinatra&formatversion=2&rvprop=content&rvslots=*",
+//     "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Lord_of_the_Flies&formatversion=2&rvprop=content&rvslots=*",
 //     {
 //       method: "GET",
 //       headers: {

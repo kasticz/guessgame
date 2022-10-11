@@ -2,6 +2,7 @@
 
 export default async function handler(req, res) {
     const imgTitle = req.body.imgTitle
+
     
     const resp = await fetch(
        `http://en.wikipedia.org/w/api.php?action=query&titles=${imgTitle}&prop=pageimages&format=json&pithumbsize=300`,

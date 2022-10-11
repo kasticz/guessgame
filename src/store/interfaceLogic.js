@@ -1,11 +1,11 @@
 import { timelineActions } from "./store";
-
+import getRandomType from "./types";
 
 let scrollInterval;
 export let timelinePosition = 0;
 let timelineScrolled = false;
 
-let scrollCheckCard
+let scrollCheckCard;
 
 export function onMouseDown(e, card, styles, dispatch, item) {
   const cardCheck = card?.dataset?.newcard === "true";
@@ -13,9 +13,9 @@ export function onMouseDown(e, card, styles, dispatch, item) {
   if (!cardCheck) {
     return;
   }
-  scrollCheckCard = card
+  scrollCheckCard = card;
   scrollInterval = setInterval(() => {
-    moveTimeline()
+    moveTimeline();
   }, 300);
   const allCards = document
     .querySelector("[data-timeline]")
@@ -73,14 +73,14 @@ export function onMouseDown(e, card, styles, dispatch, item) {
         card.classList.remove(styles.readyToDrop);
       }
     }
-    if(elemUnder.dataset.timeline){
-      card.classList.add(styles.readyToDrop)
+    if (elemUnder.dataset.timeline) {
+      card.classList.add(styles.readyToDrop);
     }
   }
 
   function placeCard(e) {
-    scrollCheckCard = null
-    clearInterval(scrollInterval)
+    scrollCheckCard = null;
+    clearInterval(scrollInterval);
     if (card.classList.contains(styles.readyToDrop)) {
       card.classList.remove(styles.readyToDrop);
     }
@@ -142,54 +142,6 @@ export function onMouseDown(e, card, styles, dispatch, item) {
   card.addEventListener("mouseup", placeCard);
 }
 
-export async function getCard(type, setItem, items, initialCard,setCookies) {
-  const resp = await fetch("./api/getRandomCard", {
-    method: "POST",
-    body: JSON.stringify({
-      type: type,
-      items: items || [],
-    }),
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  const data = await resp.json();
-
-  const randomGuess = data.card
-    ? data.card.years[Math.floor(Math.random() * data.card.years.length)]
-    : null;
-  data.card.choosedGuess = randomGuess;
-
-  async function getImg() {
-    const resp = await fetch("./api/getImage", {
-      method: "POST",
-      body: JSON.stringify({
-        imgTitle: data.card.title,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-    const image = await resp.json();
-
-    data.card.image = image.imgSource;
-  }
-  if (data.card) await getImg();
-
-  const playedCards = items || []
-  playedCards.push(data.card.title)
-
-  await setCookies('playedCards',playedCards,{
-    expires: new Date("December 17, 2030 03:24:00"),
-  })
-  
-
-  if (initialCard) {
-    return data.card;
-  }
-  setItem(data.card);
-}
-
 function checkIfElementShouldMove(element, cardCoords, allCards) {
   const elemCoords = element.getBoundingClientRect();
 
@@ -232,8 +184,7 @@ function findCardUnder(cardCoords) {
 }
 
 export function moveTimeline(e) {
-
-  const cardCoords = scrollCheckCard.getBoundingClientRect()
+  const cardCoords = scrollCheckCard.getBoundingClientRect();
   const timeline = document.querySelector("[data-timeline]");
 
   const checkScroll = window.innerWidth - cardCoords.right;
@@ -243,8 +194,11 @@ export function moveTimeline(e) {
   const scrollRight =
     checkScroll < scrollThreshHold && timelinePosition > -50000;
 
-    
-  if ((scrollLeft || scrollRight) && !timelineScrolled && cardCoords.bottom > 200) {
+  if (
+    (scrollLeft || scrollRight) &&
+    !timelineScrolled &&
+    cardCoords.bottom > 200
+  ) {
     timelineScrolled = true;
     setTimeout(() => {
       timelineScrolled = false;
@@ -252,24 +206,118 @@ export function moveTimeline(e) {
     timelinePosition = scrollLeft
       ? timelinePosition + 600
       : timelinePosition - 600;
-      if(timelinePosition >= -300 ) timelinePosition = 0
+    if (timelinePosition >= -300) timelinePosition = 0;
     timeline.style.transform = `translate(${timelinePosition}px,0)`;
   }
 }
-export function changeTimeLinePos(newTlPos){
-  timelinePosition = newTlPos
+export function changeTimeLinePos(newTlPos) {
+  timelinePosition = newTlPos;
 }
 
-function debounce(fn, delay) {
-  let cd;
-  return function exFunction() {
-    if (!cd) {
-      cd = true;
-      setTimeout(() => {
-        cd = false;
-      }, delay);
-      fn(...arguments);
-    }
-    return;
-  };
+export async function getCard(
+  type,
+  setItem,
+  items,
+  initialCard,
+  setCookies,
+  cardsPlayed
+) {
+  const resp = await fetch("./api/getRandomCard", {
+    method: "POST",
+    body: JSON.stringify({
+      type: type,
+      items: items ? items[type] : [],
+      cardsPlayed: cardsPlayed,
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  const data = await resp.json();
+
+  const randomGuess = data.card
+    ? data.card.years[Math.floor(Math.random() * data.card.years.length)]
+    : null;
+  data.card.choosedGuess = randomGuess;
+
+  async function getImg() {
+    const resp = await fetch("./api/getImage", {
+      method: "POST",
+      body: JSON.stringify({
+        imgTitle: data.card.title,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    const image = await resp.json();
+
+    data.card.image = image.imgSource;
+  }
+  if (data.card.title) await getImg();
+  if (data.clearCookies) {
+    items[type] = cardsPlayed;
+  }
+
+  if (initialCard?.first) {
+    return data.card;
+  }
+
+  if (!initialCard?.second) {
+    items[type].push(data.card.title);
+
+    await setCookies("playedCards", items, {
+      expires: new Date("December 17, 2030 03:24:00"),
+    });
+  }
+
+  setItem(data.card);
+  return data.card.title;
+}
+
+export async function placeInitialCards(
+  type,
+  playedCardsCookies,
+  setCookies,
+  setItem,
+  setNextItem,
+  dispatch
+) {
+  const cookiesObj = playedCardsCookies
+    ? playedCardsCookies
+    : { human: [], event: [], object: [] };
+
+  const typeForFirst = type === "all" ? getRandomType() : type;
+  const typeForSecond = type === "all" ? getRandomType() : type;
+  const typeForThird = type === "all" ? getRandomType() : type;
+
+  const itemI = await getCard(
+    typeForFirst,
+    null,
+    cookiesObj,
+    { first: true },
+    setCookies
+  );
+  const month = itemI.choosedGuess[1].slice(itemI.choosedGuess.indexOf("|"));
+  itemI.answer = [
+    Number.parseInt(itemI.choosedGuess[1]),
+    Number.parseInt(month),
+  ];
+  itemI.finalIndex = 0;
+  itemI.initial = true;
+  dispatch(timelineActions.addItem(itemI));
+
+  cookiesObj[type].push(itemI.title);
+
+  const secondItem = await getCard(
+    typeForSecond,
+    setItem,
+    cookiesObj,
+    { second: true },
+    setCookies
+  );
+
+  cookiesObj[type].push(secondItem);
+
+  getCard(typeForThird, setNextItem, cookiesObj, false, setCookies);
 }

@@ -10,12 +10,11 @@ export default async function handler(req, res) {
   const db = client.db();
 
 
-  const allowedTypes =
-    typeToFind === "all" ? ["human", "events", "objects"] : [typeToFind];
+
 
   const allOfTypes = await db
     .collection("guessGame")
-    .find({ title: { $nin: playedItems }, type: { $in: allowedTypes } })
+    .find({ title: { $nin: playedItems }, type: typeToFind })
     .toArray();
   client.close();
 
@@ -28,6 +27,7 @@ export default async function handler(req, res) {
     random = allOfTypes[Math.floor(Math.random() * l)];
     ifAlreadyInPlay = playedItems.find((item) => item === random.title);
   }
+  console.log(l)
 
-  res.status(200).json({ card: random, titles: playedItems, all: allOfTypes });
+  res.status(200).json({ card: random, clearCookies : l  < 4});
 }

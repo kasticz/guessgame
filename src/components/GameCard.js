@@ -29,7 +29,7 @@ export default function GameCard(props) {
         }}
         className={styles.imageWrapper}
       ></div>
-      <span className={`${styles.guessType} ${item.guessResult ? styles.correct : styles.wrong}`}>{item.answer[0]}</span>
+      <span className={`${styles.guessType} ${item.guessResult ? styles.correct : styles.wrong}`}>{`Год ${item.choosedGuess[0]} ${item.answer[0]}`}</span>
       </a>
     </div>
     

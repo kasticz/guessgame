@@ -2,7 +2,7 @@ import styles from "./Game.module.sass";
 import NewGameCard from "./NewGameCard";
 import TimeLine from "./TimeLine";
 import { useState, useEffect } from "react";
-import { getCard } from "../store/interfaceLogic";
+import { getCard, placeInitialCards } from "../store/interfaceLogic";
 import { useDispatch, useSelector } from "react-redux";
 import { timelineActions } from "../store/store";
 import { useCookies } from "react-cookie";
@@ -24,15 +24,15 @@ export default function Game(props) {
   useEffect(() => {
     async function getNewCard() {
       dispatch(timelineActions.setItemPlaced());
-      setItem(null)
       if (nextItem) setItem(nextItem);
 
-      getCard(
+      await getCard(
         props.choosenType,
         setNextItem,
         cookies.playedCards,
         false,
         setCookies,
+        [...items,item]
       );
     }
     if (itemPlaced) {
@@ -40,55 +40,22 @@ export default function Game(props) {
     }
   }, [itemPlaced]);
 
-  useEffect(() => {
-    async function placeInitialCard() {
-      const item = await getCard(
+  useEffect(() => {    
+    if (!item && !nextItem) {
+      placeInitialCards(
         props.choosenType,
-        null,
         cookies.playedCards,
-        true,
-        setCookies
-      );
-      const month = item.choosedGuess[1].slice(item.choosedGuess.indexOf("|"));
-      item.answer = [
-        Number.parseInt(item.choosedGuess[1]),
-        Number.parseInt(month),
-      ];
-      item.finalIndex = 0;
-      item.initial = true;
-      dispatch(timelineActions.addItem(item));
-      getCard(
-        props.choosenType,
+        setCookies,
         setItem,
-        cookies.playedCards,
-        false,
-        setCookies
-      );
-      getCard(
-        props.choosenType,
         setNextItem,
-        cookies.playedCards,
-        false,
-        setCookies
+        dispatch,
       );
-    }
-    if (!item) {
-      placeInitialCard();
     }
   }, []);
 
 
-  useEffect(()=>{
-    if((item && nextItem) && item.title === nextItem.title){
-      getCard(
-        props.choosenType,
-        setNextItem,
-        cookies.playedCards,
-        false,
-        setCookies
-      );
-    }
-  },[item,nextItem])
+
+
 
   const hearts = [1, 2, 3].map((item, index) => {
     return (
