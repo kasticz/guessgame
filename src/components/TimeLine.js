@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeTimeLinePos, getCard, timelinePosition } from "../store/interfaceLogic";
-import { timelineActions } from "../store/store";
+import {  useSelector } from "react-redux";
+import { changeTimeLinePos } from "../store/interfaceLogic";
+
 import GameCard from "./GameCard";
 import styles from "./TimeLine.module.sass";
 
@@ -21,10 +21,9 @@ export default function TimeLine(props) {
   useEffect(()=>{
     if(cards.length > 0){
       const lastAdded = cards.findIndex(item => item.lastAdded)
-      const newTlPos = lastAdded * -300 <= -1800 ? lastAdded * -300 : 0
+      const newTlPos = lastAdded * -322 <= -1630 ? (lastAdded * -322) - 30 : 0
       tlRef.current.style.transform = `translate(${newTlPos}px,0)`
       changeTimeLinePos(newTlPos)
-
     }
 
   },[cards])

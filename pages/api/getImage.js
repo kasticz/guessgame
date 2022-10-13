@@ -14,10 +14,14 @@ export default async function handler(req, res) {
         }
       );
       const data = await resp.json();
+
+
       
 
-      const imgPre = data.query.pages;
-      const imgSource = imgPre[Object.keys(imgPre)[0]].thumbnail.source;
+      const imgPre = data?.query?.pages;
+      const imgSource = imgPre ? imgPre[Object.keys(imgPre)[0]]?.thumbnail?.source : null;
+
+ 
 
      
 
@@ -25,6 +29,6 @@ export default async function handler(req, res) {
 
 
 
-    res.status(200).json({ imgSource})
+    res.status(200).json({ imgSource : imgSource || false})
   }
   

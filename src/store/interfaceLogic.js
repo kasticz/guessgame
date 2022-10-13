@@ -133,6 +133,10 @@ export function onMouseDown(e, card, styles, dispatch, item) {
     card.style.top = `auto`;
     card.style.left = `auto`;
     card.style.position = "static";
+    card.style.display = 'none'
+    setTimeout(() => {
+      card.style.display = 'flex'
+    }, 100);
 
     document.removeEventListener(`mousemove`, dragCard);
     card.removeEventListener("mouseup", placeCard);
@@ -222,7 +226,6 @@ export async function getCard(
   setCookies,
   cardsPlayed
 ) {
-  console.log(type)
   const resp = await fetch("./api/getRandomCard", {
     method: "POST",
     body: JSON.stringify({
@@ -241,23 +244,37 @@ export async function getCard(
     : null;
   data.card.choosedGuess = randomGuess;
 
-  async function getImg() {
+  async function getImg(title) {
     const resp = await fetch("./api/getImage", {
       method: "POST",
       body: JSON.stringify({
-        imgTitle: data.card.title,
+        imgTitle: title,
       }),
       headers: {
         "Content-type": "application/json",
       },
     });
     const image = await resp.json();
-
-    data.card.image = image.imgSource;
+    if (image.imgSource) {
+      data.card.image = image.imgSource;
+      return true
+    } else {
+      getCard(type, setItem, items, initialCard, setCookies, cardsPlayed);
+      return false
+    }
   }
-  if (data.card.title) await getImg();
+  if (data.card.title){
+    const imgRetrieved = await getImg(data.card.title);
+    if(!imgRetrieved) return
+  } 
   if (data.clearCookies) {
-    items[type] = cardsPlayed;
+    let newCookies = { human: [], event: [], object: [] };
+    if (cardsPlayed) {
+      cardsPlayed.forEach((item) => {
+        newCookies[item.type].push(item);
+      });
+    }
+    items = newCookies;
   }
 
   if (initialCard?.first) {
@@ -307,7 +324,6 @@ export async function placeInitialCards(
   itemI.finalIndex = 0;
   itemI.initial = true;
   dispatch(timelineActions.addItem(itemI));
-
 
   cookiesObj[typeForFirst].push(itemI.title);
 

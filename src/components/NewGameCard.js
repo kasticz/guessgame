@@ -9,9 +9,11 @@ export default function NewGameCard(props) {
   const dispatch = useDispatch();
   const item = props.item;
 
+
+
   return (
     <div data-notacard className={styles.cardWrapper}>
-      {item?.image ? (
+      {item?.image && props.ready ? (
         <div
           ref={cardRef}
           data-newcard={true}
@@ -39,7 +41,7 @@ export default function NewGameCard(props) {
           >{`Год ${item.choosedGuess[0]}`}</span>
         </div>
       ) : (
-        <div className={styles.spinner}>
+        <div style={{cursor:'auto'}} className={styles.spinner}>
           <div className={styles.ring}>
             <div></div>
             <div></div>

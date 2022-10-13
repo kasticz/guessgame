@@ -2,7 +2,7 @@ import styles from "./Game.module.sass";
 import NewGameCard from "./NewGameCard";
 import TimeLine from "./TimeLine";
 import { useState, useEffect } from "react";
-import { getCard, placeInitialCards } from "../store/interfaceLogic";
+import { changeTimeLinePos, getCard, placeInitialCards } from "../store/interfaceLogic";
 import { useDispatch, useSelector } from "react-redux";
 import { timelineActions } from "../store/store";
 import { useCookies } from "react-cookie";
@@ -25,23 +25,26 @@ export default function Game(props) {
   useEffect(() => {
     async function getNewCard() {
       dispatch(timelineActions.setItemPlaced());
-      if (nextItem) setItem(nextItem);
-
-      await getCard(
-        props.choosenType === 'all' ? getRandomType() : props.choosenType,
-        setNextItem,
-        cookies.playedCards,
-        false,
-        setCookies,
-        [...items,item]
-      );
+      if (nextItem) {
+        setItem(nextItem);
+        setNextItem(null);
+        await getCard(
+          props.choosenType === "all" ? getRandomType() : props.choosenType,
+          setNextItem,
+          cookies.playedCards,
+          false,
+          setCookies,
+          [...items, item]
+        );
+      }
+      
     }
     if (itemPlaced) {
       getNewCard();
     }
   }, [itemPlaced]);
 
-  useEffect(() => {    
+  useEffect(() => {
     if (!item && !nextItem) {
       placeInitialCards(
         props.choosenType,
@@ -49,7 +52,7 @@ export default function Game(props) {
         setCookies,
         setItem,
         setNextItem,
-        dispatch,
+        dispatch
       );
     }
   }, []);
@@ -79,11 +82,19 @@ export default function Game(props) {
     dispatch(timelineActions.endGame());
     props.toMain(true);
   }
+  function moveTl(dest){
+    const timeline = document.querySelector('[data-timeline]')
+    timeline.style.transform = `translate(${dest}px,0px)`
+    changeTimeLinePos(dest)
+  }
+
 
   return (
     <div data-notacard className={styles.game}>
       <div className={styles.heartsWrapper}>{hearts}</div>
-      <NewGameCard item={item} />
+      <button onClick={()=>{moveTl(0)}} className={`${styles.moveTimeline} ${styles.moveTimelineBeginning}`}> Начало</button>
+      <button onClick={()=>{moveTl(items.length > 6 ? ((items.length - 6) * -322) -30 : 0)}} className={`${styles.moveTimeline} ${styles.moveTimelineEnd}`}>Конец</button>
+      <NewGameCard ready={nextItem} item={item} />
       <TimeLine />
       {lives === 0 && (
         <div className={styles.gameOverModal}>

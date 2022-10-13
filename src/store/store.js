@@ -10,9 +10,30 @@ const timeline = createSlice({
   reducers: {
     addItem(state, payload) {
       const i = payload.payload;
+      const answ = payload.payload.finalIndex;
       state.cards.push(i);
       state.cards.forEach((item) => (item.lastAdded = false));
       state.cards[state.cards.length - 1].lastAdded = true;
+
+      const sameDateToLeft =
+        answ !== 0
+          ? state.cards[state.cards.length - 1].answer[0] ===
+              state.cards[answ - 1].answer[0] &&
+            state.cards[state.cards.length - 1].answer[1] ===
+              state.cards[answ - 1].answer[1]
+          : false;
+      const sameDateToRight =
+        answ !== state.cards.length - 1
+          ? state.cards[state.cards.length - 1].answer[0] ===
+              state.cards[answ + 1].answer[0] &&
+            state.cards[state.cards.length - 1].answer[1] ===
+              state.cards[answ + 1].answer[1]
+          : false;
+
+      if (sameDateToLeft || sameDateToRight) {
+        state.cards[state.cards.length - 1].guessResult = true;
+      }
+
       state.cards.sort((a, b) => {
         return a.answer[0] - b.answer[0];
       });
@@ -20,22 +41,9 @@ const timeline = createSlice({
         (item) => item.title === payload.payload.title
       );
 
-      state.cards[addedItemI].guessResult =
-        addedItemI === payload.payload.finalIndex;
-
-      const sameDateToLeft =
-        addedItemI !== 0
-          ? state.cards[addedItemI].answer[0] === state.cards[addedItemI - 1].answer[0] &&
-          state.cards[addedItemI].answer[1] === state.cards[index - 1].answer[1]
-          : false;
-      const sameDateToRight =
-        addedItemI !== state.cards.length - 1
-          ? state.cards[addedItemI].answer[0] === state.cards[addedItemI + 1].answer[0] &&
-          state.cards[addedItemI].answer[1] === state.cards[index - 1].answer[1]
-          : false;
-
-      if (sameDateToLeft || sameDateToRight) {
-        state.cards[addedItemI].guessResult = true;
+      if (!state.cards[addedItemI].guessResult) {
+        state.cards[addedItemI].guessResult =
+          addedItemI === payload.payload.finalIndex;
       }
 
       if (!payload.payload.initial) {
