@@ -73,7 +73,7 @@ export function onMouseDown(e, card, styles, dispatch, item) {
         card.classList.remove(styles.readyToDrop);
       }
     }
-    if (elemUnder.dataset.timeline) {
+    if (elemUnder?.dataset?.timeline) {
       card.classList.add(styles.readyToDrop);
     }
   }
