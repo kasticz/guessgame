@@ -14,12 +14,13 @@ export function onMouseDown(e, card, styles, dispatch, item) {
     return;
   }
   scrollCheckCard = card;
-  scrollInterval = setInterval(() => {
-    moveTimeline();
-  }, 300);
+
   const allCards = document
     .querySelector("[data-timeline]")
     .querySelectorAll("[data-placedcard]");
+    scrollInterval = setInterval(() => {
+      moveTimeline(allCards);
+    }, 300);
   card.style.cursor = "grabbing";
 
   card.style.position = "absolute";
@@ -38,12 +39,8 @@ export function onMouseDown(e, card, styles, dispatch, item) {
     const cardCoords = card.getBoundingClientRect();
     card.style.display = "none";
 
-    const leftElem = document
-      .elementFromPoint(cardCoords.left - 100, cardCoords.top + 100)
-      ?.closest("[data-placedcard]");
-    const rightElem = document
-      .elementFromPoint(cardCoords.right + 100, cardCoords.top + 100)
-      ?.closest("[data-placedcard]");
+    const leftElem = findCardToTheLeft(cardCoords);
+    const rightElem = findCardToTheRight(cardCoords);
     elementsNearby[0] = leftElem;
     elementsNearby[1] = rightElem;
 
@@ -101,6 +98,7 @@ export function onMouseDown(e, card, styles, dispatch, item) {
       }
 
       let finalIndex;
+
       if (elementsNearby[0]) finalIndex = +elementsNearby[0].dataset.index;
       if (elementsNearby[1] && !finalIndex)
         finalIndex = +elementsNearby[1].dataset.index - 1;
@@ -117,7 +115,7 @@ export function onMouseDown(e, card, styles, dispatch, item) {
         cardCoords.right >= 500 &&
         !finalIndex
       )
-        finalIndex = allCards.length;
+        finalIndex = allCards.length - 1;
 
       const month = item.choosedGuess[1].slice(item.choosedGuess.indexOf("|"));
 
@@ -133,9 +131,9 @@ export function onMouseDown(e, card, styles, dispatch, item) {
     card.style.top = `auto`;
     card.style.left = `auto`;
     card.style.position = "static";
-    card.style.display = 'none'
+    card.style.display = "none";
     setTimeout(() => {
-      card.style.display = 'flex'
+      card.style.display = "flex";
     }, 100);
 
     document.removeEventListener(`mousemove`, dragCard);
@@ -162,7 +160,7 @@ function checkIfElementShouldMove(element, cardCoords, allCards) {
         allCards[i].dataset.moved = true;
       }
     }
-  } else if (xDiff < 100 && xDiff > -100 && element.dataset.moved === "true") {
+  } else if (xDiff < 100 && xDiff > -150 && element.dataset.moved === "true") {
     element.style.transform = "translateX(0px)";
     element.dataset.moving = true;
     setTimeout(() => {
@@ -173,21 +171,62 @@ function checkIfElementShouldMove(element, cardCoords, allCards) {
 }
 
 function findCardUnder(cardCoords) {
-  const cardUnderRight = document
+  const cardUnderRightBottom = document
     .elementFromPoint(cardCoords.left + 100, cardCoords.top + 150)
     ?.closest("[data-placedcard]");
-  const cardUnderLeft = document
+  const cardUnderRightTop = document
+    .elementFromPoint(cardCoords.left + 100, cardCoords.top - 150)
+    ?.closest("[data-placedcard]");
+  const cardUnderLeftBottom = document
     .elementFromPoint(cardCoords.left - 100, cardCoords.top + 150)
     ?.closest("[data-placedcard]");
-  const cardUnderExactly = document
+  const cardUnderLeftTop = document
+    .elementFromPoint(cardCoords.left - 100, cardCoords.top - 150)
+    ?.closest("[data-placedcard]");
+  const cardUnderExactlyBottom = document
     .elementFromPoint(cardCoords.left, cardCoords.top + 150)
     ?.closest("[data-placedcard]");
+  const cardUnderExactlyTop = document
+    .elementFromPoint(cardCoords.left, cardCoords.top - 150)
+    ?.closest("[data-placedcard]");
 
-  const result = cardUnderRight || cardUnderLeft || cardUnderExactly || null;
+  const result =
+    cardUnderRightBottom ||
+    cardUnderRightTop ||
+    cardUnderLeftBottom ||
+    cardUnderLeftTop ||
+    cardUnderExactlyBottom ||
+    cardUnderExactlyTop ||
+    null;
+  return result;
+}
+function findCardToTheLeft(cardCoords) {
+  const cardUnder = document
+    .elementFromPoint(cardCoords.left - 100, cardCoords.top - 200)
+    ?.closest("[data-placedcard]");
+
+  const cardBelow = document
+    .elementFromPoint(cardCoords.left - 100, cardCoords.top + 200)
+    ?.closest("[data-placedcard]");
+
+  const result = cardUnder || cardBelow || null;
   return result;
 }
 
-export function moveTimeline(e) {
+function findCardToTheRight(cardCoords) {
+  const cardUnder = document
+    .elementFromPoint(cardCoords.right + 100, cardCoords.top - 150)
+    ?.closest("[data-placedcard]");
+
+  const cardBelow = document
+    .elementFromPoint(cardCoords.right + 100, cardCoords.top + 150)
+    ?.closest("[data-placedcard]");
+
+  const result = cardUnder || cardBelow || null;
+  return result;
+}
+
+export function moveTimeline(allCards) {
   const cardCoords = scrollCheckCard.getBoundingClientRect();
   const timeline = document.querySelector("[data-timeline]");
 
@@ -212,6 +251,7 @@ export function moveTimeline(e) {
       : timelinePosition - 600;
     if (timelinePosition >= -300) timelinePosition = 0;
     timeline.style.transform = `translate(${timelinePosition}px,0)`;
+    allCards.forEach(item => item.style.transform = 'translateX(0px)')
   }
 }
 export function changeTimeLinePos(newTlPos) {
@@ -257,16 +297,16 @@ export async function getCard(
     const image = await resp.json();
     if (image.imgSource) {
       data.card.image = image.imgSource;
-      return true
+      return true;
     } else {
       getCard(type, setItem, items, initialCard, setCookies, cardsPlayed);
-      return false
+      return false;
     }
   }
-  if (data.card.title){
+  if (data.card.title) {
     const imgRetrieved = await getImg(data.card.title);
-    if(!imgRetrieved) return
-  } 
+    if (!imgRetrieved) return;
+  }
   if (data.clearCookies) {
     let newCookies = { human: [], event: [], object: [] };
     if (cardsPlayed) {

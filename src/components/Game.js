@@ -44,6 +44,8 @@ export default function Game(props) {
     }
   }, [itemPlaced]);
 
+
+
   useEffect(() => {
     if (!item && !nextItem) {
       placeInitialCards(

@@ -11,28 +11,34 @@ const timeline = createSlice({
     addItem(state, payload) {
       const i = payload.payload;
       const answ = payload.payload.finalIndex;
+
+      const sameDateToLeft =
+      answ !== 0 
+        ? state.cards[answ - 1].answer[0] ===
+            i.answer[0] &&
+          state.cards[answ - 1].answer[1] ===
+            i.answer[1]
+        : false;
+    const sameDateToRight =
+      answ !== state.cards.length
+        ? state.cards[answ].answer[0] ===
+            i.answer[0] &&
+          state.cards[answ].answer[1] ===
+            i.answer[1]
+        : false;
+
+    if (sameDateToLeft || sameDateToRight) {
+      i.guessResult = true;
+    }
+
+
+
+
       state.cards.push(i);
       state.cards.forEach((item) => (item.lastAdded = false));
       state.cards[state.cards.length - 1].lastAdded = true;
 
-      const sameDateToLeft =
-        answ !== 0
-          ? state.cards[state.cards.length - 1].answer[0] ===
-              state.cards[answ - 1].answer[0] &&
-            state.cards[state.cards.length - 1].answer[1] ===
-              state.cards[answ - 1].answer[1]
-          : false;
-      const sameDateToRight =
-        answ !== state.cards.length - 1
-          ? state.cards[state.cards.length - 1].answer[0] ===
-              state.cards[answ + 1].answer[0] &&
-            state.cards[state.cards.length - 1].answer[1] ===
-              state.cards[answ + 1].answer[1]
-          : false;
 
-      if (sameDateToLeft || sameDateToRight) {
-        state.cards[state.cards.length - 1].guessResult = true;
-      }
 
       state.cards.sort((a, b) => {
         return a.answer[0] - b.answer[0];
