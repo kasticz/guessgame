@@ -44,6 +44,8 @@ export function onMouseDown(e, card, styles, dispatch, item) {
     elementsNearby[0] = leftElem;
     elementsNearby[1] = rightElem;
 
+
+
     let isCardUnder = findCardUnder(cardCoords);
 
     const elemUnder = document.elementFromPoint(e.clientX, e.clientY);
@@ -115,7 +117,7 @@ export function onMouseDown(e, card, styles, dispatch, item) {
         cardCoords.right >= 500 &&
         !finalIndex
       )
-        finalIndex = allCards.length - 1;
+        finalIndex = allCards.length;
 
       const month = item.choosedGuess[1].slice(item.choosedGuess.indexOf("|"));
 
@@ -295,7 +297,8 @@ export async function getCard(
       },
     });
     const image = await resp.json();
-    if (image.imgSource) {
+    
+    if (image.imgSource) {      
       data.card.image = image.imgSource;
       return true;
     } else {
@@ -303,7 +306,7 @@ export async function getCard(
       return false;
     }
   }
-  if (data.card.title) {
+  if (data.card.title) {   
     const imgRetrieved = await getImg(data.card.title);
     if (!imgRetrieved) return;
   }

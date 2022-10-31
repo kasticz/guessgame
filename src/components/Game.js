@@ -60,6 +60,8 @@ export default function Game(props) {
   }, []);
 
 
+  
+
 
 
 
@@ -89,6 +91,8 @@ export default function Game(props) {
     timeline.style.transform = `translate(${dest}px,0px)`
     changeTimeLinePos(dest)
   }
+
+  
 
 
   return (

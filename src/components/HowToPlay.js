@@ -5,6 +5,7 @@ import how3 from "../images/how3.png";
 import styles from "./HowToPlay.module.sass";
 
 export default function HowToPlay(props) {
+  
   return (
     <Fragment>
       <div
